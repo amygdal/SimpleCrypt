@@ -31,8 +31,19 @@ public class ROT13  {
     }
 
     public static String rotate(String s, Character c) {
+//        int charIndex = 0;
 
-        return "";
+//       char[] charArray = s.toCharArray();
+//       for(int x = 0; x < charArray.length; x++){
+//           if (charArray[x] == c){
+//               charIndex = x;
+//           }
+//       }
+        int charIndex = s.indexOf(c);
+       String rightHalf = s.substring(charIndex);
+       String leftHalf = s.substring(0,charIndex);
+
+        return rightHalf + leftHalf;
     }
 
 
