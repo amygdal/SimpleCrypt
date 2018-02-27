@@ -67,14 +67,14 @@ public class ROT13Test {
         System.out.println(Q1);
         System.out.println(A1);
         // Then
-        assertTrue(actual.equals(A1));
+        assertEquals(A1, actual);
 
         // When
         String actual2 = cipher.decrypt(Q2);
         System.out.println(Q2);
         System.out.println(A2);
         // Then
-        assertTrue(actual2.equals(A2));
+        assertEquals(A2, actual2);
     }
     @Test
     public void cryptTest2() {

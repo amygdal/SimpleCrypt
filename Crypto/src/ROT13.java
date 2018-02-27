@@ -6,11 +6,20 @@ import static java.lang.Character.toLowerCase;
 
 public class ROT13  {
 
+    private String myCipher;
+    private String myAlphabet;
+
     public static void main(String[] args) {
+
         System.out.println("0384");
     }
 
     ROT13(Character cs, Character cf) {
+        myAlphabet = "abcdefghijklmnopqrstuvwxyz";
+        myCipher = rotate(myAlphabet,cf);
+        myAlphabet += myAlphabet.toUpperCase();
+        myCipher += myCipher.toUpperCase();
+
     }
 
     ROT13() {
@@ -19,15 +28,44 @@ public class ROT13  {
 
     public String crypt(String text) throws UnsupportedOperationException {
 
-        return "";
+        return encrypt(decrypt(text));
     }
 
     public String encrypt(String text) {
-        return text;
+
+        String encyrptedMessage = "";
+
+        for (int i = 0; i < text.length(); i++){
+            char charToRotate = text.charAt(i);
+            int indexOfCurrentStringLetter  = myAlphabet.indexOf(charToRotate);
+            if (indexOfCurrentStringLetter == -1){
+                encyrptedMessage+=charToRotate;
+            } else {
+                encyrptedMessage += Character.toString(myCipher.charAt(indexOfCurrentStringLetter));
+            }
+
+        }
+
+        return encyrptedMessage;
     }
 
     public String decrypt(String text) {
-        return text;
+
+        String decryptedMessage = "";
+
+        for (int i = 0; i < text.length(); i++){
+            char charToRotate = text.charAt(i);
+            int indexOfCurrentStringLetter  = myCipher.indexOf(charToRotate);
+            if (indexOfCurrentStringLetter == -1){
+                decryptedMessage+=charToRotate;
+            } else {
+                decryptedMessage += Character.toString(myAlphabet.charAt(indexOfCurrentStringLetter));
+            }
+
+
+        }
+
+        return decryptedMessage;
     }
 
     public static String rotate(String s, Character c) {
